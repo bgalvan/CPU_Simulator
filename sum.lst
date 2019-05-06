@@ -1,0 +1,47 @@
+
+sum.elf:     file format elf32-avr
+
+
+Disassembly of section .text:
+
+00000000 <__ctors_end>:
+   0:	32 c0       	rjmp	.+100    	; 0x66 <__ctors_end+0x66>
+   2:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <_edata>
+   6:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <_edata+0x1>
+   a:	89 2b       	or	r24, r25
+   c:	a9 f0       	breq	.+42     	; 0x38 <__ctors_end+0x38>
+   e:	80 91 76 00 	lds	r24, 0x0076	; 0x800076 <cnt>
+  12:	90 91 77 00 	lds	r25, 0x0077	; 0x800077 <cnt+0x1>
+  16:	88 0f       	add	r24, r24
+  18:	99 1f       	adc	r25, r25
+  1a:	80 5a       	subi	r24, 0xA0	; 160
+  1c:	9f 4f       	sbci	r25, 0xFF	; 255
+  1e:	fc 01       	movw	r30, r24
+  20:	80 81       	ld	r24, Z
+  22:	91 81       	ldd	r25, Z+1	; 0x01
+  24:	20 91 74 00 	lds	r18, 0x0074	; 0x800074 <sum>
+  28:	30 91 75 00 	lds	r19, 0x0075	; 0x800075 <sum+0x1>
+  2c:	82 0f       	add	r24, r18
+  2e:	93 1f       	adc	r25, r19
+  30:	90 93 75 00 	sts	0x0075, r25	; 0x800075 <sum+0x1>
+  34:	80 93 74 00 	sts	0x0074, r24	; 0x800074 <sum>
+  38:	80 91 72 00 	lds	r24, 0x0072	; 0x800072 <_edata>
+  3c:	90 91 73 00 	lds	r25, 0x0073	; 0x800073 <_edata+0x1>
+  40:	21 e0       	ldi	r18, 0x01	; 1
+  42:	89 2b       	or	r24, r25
+  44:	09 f0       	breq	.+2      	; 0x48 <__ctors_end+0x48>
+  46:	20 e0       	ldi	r18, 0x00	; 0
+  48:	82 2f       	mov	r24, r18
+  4a:	90 e0       	ldi	r25, 0x00	; 0
+  4c:	90 93 73 00 	sts	0x0073, r25	; 0x800073 <_edata+0x1>
+  50:	80 93 72 00 	sts	0x0072, r24	; 0x800072 <_edata>
+  54:	80 91 76 00 	lds	r24, 0x0076	; 0x800076 <cnt>
+  58:	90 91 77 00 	lds	r25, 0x0077	; 0x800077 <cnt+0x1>
+  5c:	01 96       	adiw	r24, 0x01	; 1
+  5e:	90 93 77 00 	sts	0x0077, r25	; 0x800077 <cnt+0x1>
+  62:	80 93 76 00 	sts	0x0076, r24	; 0x800076 <cnt>
+  66:	80 91 76 00 	lds	r24, 0x0076	; 0x800076 <cnt>
+  6a:	90 91 77 00 	lds	r25, 0x0077	; 0x800077 <cnt+0x1>
+  6e:	09 97       	sbiw	r24, 0x09	; 9
+  70:	44 f2       	brlt	.-112    	; 0x2 <__ctors_end+0x2>
+  72:	08 95       	ret
