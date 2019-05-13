@@ -1,5 +1,7 @@
 CXX		:= g++
 TARGET	:= $(PROJNAME)$(EXT)
+LIB		:= libavrsim.a
+LIBDIR	:= bin
 
 HDRS	:= $(shell python mk/pyfind.py include .h)
 
@@ -13,7 +15,7 @@ LOBJS   := $(LSRCS:.cpp=.o)
 DEPS	:= $(USRCS:.cpp=.d) $(LSRCS:.cpp=.d)
 
 ifeq ($(PLATFORM), Windows)
-	DOBJS := $(subst /,\,$(UOBJS)) $(subst /.\,$(LOBJS))
+	DOBJS := $(subst /,\,$(UOBJS)) $(subst /,\,$(LOBJS))
 else
 	DOBJS := $(UOBJS) $(LOBJS)
 endif
@@ -23,12 +25,16 @@ CXXFLAGS	:= -std=c++11 -Iinclude -MMD
 .PHONY: cpp-build
 cpp-build: $(TARGET) ## build C++ application
 
-$(TARGET):	$(UOBJS) $(LOBJS)
+$(TARGET):	$(UOBJS) $(LIBDIR)/$(LIB)
+	#@python $(MK)/pyversion.py inc-build
 	g++ -o $@ $^ $(LFLAGS)
 
 %.o:	%.cpp
 	$(CXX) -c -o $@ $< $(CXXFLAGS)
 
+$(LIBDIR)/$(LIB):	$(LOBJS)
+	ar rvs $@ $^
+		
 .PHONY:	run
 run:	$(TARGET)	## launch primary build application
 	$(PREFIX)$(TARGET)
@@ -36,6 +42,10 @@ run:	$(TARGET)	## launch primary build application
 .PHONY: clean
 clean:	## remove all build artifacts
 	$(RM) $(TARGET) $(DOBJS) $(DEPS)
+
+.PHONY:	realclean
+realclean:	## delete the library file
+	$(RM) $(LIBDIR)/$(LIB)
 
 -include $(DEPS)
 

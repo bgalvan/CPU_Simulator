@@ -23,3 +23,4 @@ void Inverter::tick(void) {
         outpin->set_val(oval);
     } 
 }
+

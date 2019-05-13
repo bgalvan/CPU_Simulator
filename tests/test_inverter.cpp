@@ -20,3 +20,4 @@ TEST_CASE( "test_inverter operation", "parts" ) {
     inv.tick();
     REQUIRE( outpin->get_val() == 1 );
 }
+

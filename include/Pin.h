@@ -25,3 +25,4 @@ class Pin {
     uint16_t val;
     Component * part_addr;
 };
+

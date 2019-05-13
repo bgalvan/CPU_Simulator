@@ -41,4 +41,3 @@ void Component::add_out_pin(std::string name) {
     paddr->set_part_addr(this);
     out_pins.push_back(paddr);
 }
-

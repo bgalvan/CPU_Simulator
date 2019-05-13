@@ -22,3 +22,4 @@ TEST_CASE( "test wire operation", "wire" ) {
     REQUIRE(pin2.get_val() == 1234);
     REQUIRE(pin3.get_val() == 1234);
 }
+

@@ -1,3 +1,4 @@
-// Copyright Bobby Galvan 2019
+// COpyright 2018 Roie R. Black
 #define CATCH_CONFIG_MAIN
 #include <catch.hpp>
+

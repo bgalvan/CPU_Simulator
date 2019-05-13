@@ -7,13 +7,13 @@ MK := mk
 
 # configure these settings for your Ardino setup
 AVRPROJ	:= blink
-MCU		:= atmega328p
+MCU		:= attiny85
 FREQ	:= 16000000L
 PGMR	:= arduino
 
 # uncomment and modify the right port
-# PORT	:= /dev/ttyACM0
-PORT	:=	/dev/cu.usbmodem1411
+PORT	:= /dev/ttyACM0
+#PORT	:=	/dev/cu.usbmodem1421
 #PORT	:== COM6
 
 include $(MK)/os-detect.mk
