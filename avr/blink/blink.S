@@ -35,8 +35,8 @@ main:
        
 
         ; enter the blink loop
-1:      rcall       toggle
-        rcall       delay
+1:      call        toggle
+        call        delay
         rjmp        1b
 
 toggle:

@@ -1,5 +1,6 @@
 // Copyright 2018 ROie R. Black
 #include <catch.hpp>
+#include <iostream>
 #include "InstructionM.h"
 
 TEST_CASE("test insturctionM constructor", "parts") {
@@ -18,11 +19,14 @@ TEST_CASE("Test_IM", "parts") {
 	InstructionM IM(name, SIZE);
 
 	IM.load(file);
+	std::cout << "\nTesting Fetch:" << std::endl;
 
 	Pin * inpin = IM.get_in_pin("PCin");
 	Pin * outpin = IM.get_out_pin("PCout");
-	inpin->set_val(1);
-	REQUIRE(inpin->get_val() == 1);
+	inpin->set_val(0);
+	REQUIRE(inpin->get_val() == 0);
+	IM.tick();
+	inpin->set_val(2);
 	IM.tick();
 	//REQUIRE( outpin->get_val() == 1 );
 	//inpin->set_val(0);

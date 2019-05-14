@@ -28,5 +28,3 @@ class Component {
     std::vector<Pin *> in_pins;
     std::vector<Pin *> out_pins;
 };
-
-

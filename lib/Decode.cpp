@@ -56,8 +56,8 @@ void Decode::DecodeIns(uint16_t a, uint16_t b) {
 
 	std::string a1 = std::bitset<16>(a).to_string();
 	std::string b1 = std::bitset<16>(b).to_string();
-	std::cout << "Instruction 1: " << a1 << std::endl;
-	std::cout << "Instruction 2: " << b1 << std::endl;
+	std::cout << "Instruction: " << a1 << std::endl;
+	std::cout << "Instruction: " << b1 << std::endl;
 
 	std::string dataA1 = a1.substr(0,4);
 	std::string dataA2 = a1.substr(4,4);
@@ -116,6 +116,8 @@ void Decode::DecodeIns(uint16_t a, uint16_t b) {
 			outpin3->set_val(op);
 
                 }
+		else
+			std::cout << "Instruction " << b1 << b2 <<  b3 <<  b4 << " is invalid." << std::endl;
                 break;
             case 0b0001: //SUB
                 if (b2.test(3) && !b2.test(2)) {

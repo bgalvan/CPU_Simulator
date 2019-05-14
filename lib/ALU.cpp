@@ -35,13 +35,15 @@ void ALU::tick(void) {
 		int res = (uint8_t) sum;
 			
 		
-                    std::cout << "ADD "
+                    std::cout << "ADD"
+			<< "\t"
 			<< rd
  			<< " + " 
                         << rr
-			<< " Equals ";
+			<<std::endl;
+		    std::cout << "----------------" << std::endl;
 		    res = rd + rr;
-		    std::cout << res << std::endl;
+		    std::cout << "\t" << res << std::endl;
 		    outpin1->set_val(res);
 
                 }
@@ -80,9 +82,11 @@ void ALU::tick(void) {
 			    else 
 				    sum[i] = '0';
 		    }
-		    int res = std::stoi(sum);
-		    std::cout << res << std::endl;
-		    outpin1->set_val(res);         
+
+		    std::bitset<8> Rd (sum);
+		    std::cout << "\t" << Rd << std::endl;
+
+		    outpin1->set_val(Rd.to_ulong());         
 		}       
 		break;
             case 9: //EOR
@@ -105,9 +109,9 @@ void ALU::tick(void) {
 			    else 
 				    sum[i] = '0';
 		    }
-		    int res = std::stoi(sum);
-		    std::cout << res << std::endl;
-		    outpin1->set_val(res);   
+		    std::bitset<8> Rd (sum);
+		    std::cout << "\t" << Rd << std::endl;
+		    outpin1->set_val(Rd.to_ulong());   
 		}
                 break;
 	    case 10: //OR
@@ -116,25 +120,30 @@ void ALU::tick(void) {
 		std::string rr = std::bitset<8>(Rr).to_string();
 		std::string sum = std::bitset<8>(Rd).to_string();
 		
-                    std::cout << "OR "
-                        << rd
-                        << " X "  
-                        << rr
-			<< " Equals ";
+		
+                    std::cout << "\nOR" << "\t" << rd << std::endl;
+                    std::cout << "\t" << rr << std::endl;
+		    std::cout << "----------------" << std::endl;
+		    
 		    
 		    for (int i=0; i<8; i++) {
-			    if ((rd[i] == '1') && (rr[i] == '0')) 
+			    if ((rd[i] == '1') && (rr[i] == '0')) {
+				    //std::cout << "I: " << i;
 				    sum[i] = '1';
+			    }
 			    else if ((rd[i] == '0') && (rr[i] == '1')) 
 				    sum[i] = '1';
 			    else if ((rd[i] == '1') && (rr[i] == '1'))
 				    sum[i] = '1';
+			    else if ((rd[i] == '0') && (rr[i] == '0'))
+				    sum[i] = '0';
 			    else 
 				    sum[i] = '0';
 		    }
-		    int res = std::stoi(sum);
-		    std::cout << res << std::endl;
-		    outpin1->set_val(res); 
+		    
+		    std::bitset<8> Rd (sum);
+		    std::cout << "\t" << Rd << std::endl;
+		    outpin1->set_val(Rd.to_ulong()); 
 		}
                 break;
 	    case 74: //COM
@@ -142,10 +151,8 @@ void ALU::tick(void) {
 		std::string rd = std::bitset<8>(Rd).to_string();
 		std::string sum = std::bitset<8>(Rd).to_string();
 		
-                    std::cout << "COM "
-                        << rd
-                        << " X"  
-			<< " Equals ";
+                    std::cout << "\nCOM" << "\t" << rd << std::endl;
+		    std::cout << "----------------" << std::endl;
 		    
 		    for (int i=0; i<8; i++) {
 			    if (rd[i] == '1') 
@@ -153,9 +160,10 @@ void ALU::tick(void) {
 			    else 
 				    sum[i] = '1';
 		    }
-		    int res = std::stoi(sum);
-		    std::cout << res << std::endl;
-		    outpin1->set_val(res); 
+
+		    std::bitset<8> Rd (sum);
+		    std::cout << "\t" << Rd << std::endl;
+		    outpin1->set_val(Rd.to_ulong()); 
 
 		}
                 break;

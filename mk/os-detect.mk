@@ -3,8 +3,6 @@ ifeq ($(OS), Windows_NT)
 	PREFIX :=
 	RM	:= del
 	WHICH := where
-	PROJPATH := $(CURDIR)
-	PROJNAME := $(notdir $(PROJPATH))
 	PLATFORM := Windows
 else
 	EXT :=

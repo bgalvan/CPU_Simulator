@@ -1,4 +1,4 @@
-// Copyright 2018 ROie R. Black
+// Copyright 2019 Robert Galvan
 #include <catch.hpp>
 #include "Pin.h"
 
@@ -17,4 +17,3 @@ TEST_CASE( "test_pin set/get methods", "pin" ) {
     pin.set_val(1234);
     REQUIRE(pin.get_val() == 1234);
 }
-

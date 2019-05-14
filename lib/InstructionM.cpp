@@ -45,6 +45,9 @@ void InstructionM::tick(void) {
 
 	outpin1->set_val(opcode);
 	outpin2->set_val(opcode2);
+	std::cout << "Data item at location #" << ival << ": " << opcode << std::endl;
+	std::cout << "Data item at location #" << ival+1 << ": " << opcode2 << std::endl;
+
 
 }
 
@@ -249,6 +252,8 @@ void InstructionM::load(std::string name) {
     } else {
         std::cout << "error reading file" << std::endl;
     }
+    
+
 
  
     

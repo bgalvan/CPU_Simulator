@@ -8,5 +8,5 @@ TSTTGT	:= testapp$(EXT)
 test:	$(TSTTGT)	## Run project unit tests using catch.hpp
 	$(PREFIX)$(TSTTGT)
 
-$(TSTTGT): $(TSTOBJS) $(LOBJS)
+$(TSTTGT):  $(TSTOBJS) $(LOBJS)
 	$(CXX) -o $@ $^ $(LFLAGS)
